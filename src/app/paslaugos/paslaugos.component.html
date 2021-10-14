@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+        
+        <div class="card mt-5">
+            <div class="card-header">Ivertinimai</div>
+            <div class="card-body">
+                <ul class="list-group" *ngIf="!loading">
+                    <li class="list-group-item" *ngFor="let ivertinimas of ivertinimai">
+                        <b> {{ivertinimas.nameSurname}}: </b> <br>
+                        {{ivertinimas.stars}} <br>
+                         {{ivertinimas.text}} 
+                    </li>
+
+                </ul>
+
+                <div class="alert alert-info" *ngIf="loading && !error">Ivertinimai kraunasi...</div>
+                <div class="alert alert-danger" *ngIf="error">
+                    <h1>Ivyko klaida</h1>
+                    <p> {{error}} </p>
+                </div>
+
+                <hr>
+                <div class="mb-3">
+                    <label class="form-label">Vardas ir Pavarde</label>
+                    <input class="form-control" type="text" name="email" #nameSurname>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Jusu ivertinimas</label>
+                    <select [(ngModel)]="selectas" class="form-control" #stars>
+                        <option selected disabled value = "-1">pasirinkite</option>
+                        <!-- <option value="★★★★★">5</option> -->
+
+                        <!-- <option value="">pasirinkite</option> -->
+                        <option value="★★★★★">5</option>
+                        <option value="★★★★">4</option>
+                        <option value="★★★">3</option>
+                        <option value="★★">2</option>
+                        <option value="★">1</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Jusu komentaras</label>
+                    <input class="form-control" type="text" name="komentaras" #text>
+                </div>
+                <button [disabled]="selectas < 0" class="btn btn-success" (click)="send(nameSurname.value, stars.value, text.value)" >Siusti</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
