@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="card mb-3">
+                <div class="card-header">Registracijos i bureli forma</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Vaiko vardas</label>
+                        <input type="text" class="form-control" ngModel name="name" required minlength="3" maxlength="15" #name="ngModel">
+                        <span *ngIf="!name.valid && name.touched" class="help-block">Netinkamas amzius</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vaiko gimimo metai (nuo 12m. iki 18m.)</label>
+                        <input birthYear type="text" class="form-control" ngModel name="birthYear" required #birthYear="ngModel">
+                        <span *ngIf="!birthYear.valid && birthYear.touched" class="help-block">Ivestas netesingas mailas</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vaiko lytis</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="vyras" checked ngModel name="sex">
+                            <label class="form-check-label" for="exampleRadios1">
+                              Vyras
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="moteris" >
+                            <label class="form-check-label" for="exampleRadios2">
+                              Moteris
+                            </label>
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">El. pasto adresas</label>
+                        <input type="text" class="form-control" ngModel name="email" required email usedEmail #email="ngModel">
+                        <span *ngIf="!email.valid && email.touched" class="help-block">Ivestas netesingas mailas</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Telefono numeris</label>
+                        <input placeholder="+370xxxxxxxx" type="text" class="form-control" ngModel name="phoneNo" minlength="10" maxlength="12" required #phoneNo="ngModel">
+                        <span *ngIf="!phoneNo.valid && phoneNo.touched" class="help-block">Neteisingai ivestas telefono numeris</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Klase</label>
+                        <select class="form-control" ngModel name="grade" required #grade="ngModel">
+                            <option value="5">Penkta klase</option>
+                            <option value="6">Sesta klase</option>
+                            <option value="7">Septinta klase</option>
+                            <option value="8">Astunta klase</option>
+                            <option value="9">Devinta klase</option>
+                            <option value="10">Desimta klase</option>
+                            <option value="11">Vienuolikta klase</option>
+                            <option value="12">Dvylikta klase</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mokyklos pavadinimas</label>
+                        <input  type="text" class="form-control" ngModel name="school" required maxlength="32" #school="ngModel">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nuolaidos kodas</label>
+                        <input discCode type="text" class="form-control" ngModel name="discCode" required #discCode="ngModel">
+                        <span *ngIf="!discCode.valid && discCode.touched" class="help-block">Tokio kodo nera, jums nuolaida nesuteikta</span>
+                        <span *ngIf="discCode.valid" class="help-block">Jums suteikta nuolaida</span>
+                    </div>
+                    <button class="btn btn-success"  >Pateikti</button>
+                    
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+</div>
